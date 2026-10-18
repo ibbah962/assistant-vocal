@@ -45,18 +45,3 @@ python main.py
 ```
 
 Clique sur le bouton d'écoute et dis une commande, par exemple « joue [titre] » ou « ferme ».
-
-## Publier sur GitHub
-
-Crée d'abord un dépôt vide sur GitHub, puis depuis le dossier du projet :
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/TON_NOM/assistant-vocal.git
-git push -u origin main
-```
-
-Remplace `TON_NOM` par ton nom d'utilisateur GitHub. Le dossier `.venv` et les fichiers secrets `.env` sont exclus par `.gitignore`.

@@ -36,13 +36,11 @@ def execute_commmande():
     command = reconnaitre_voix()
     if "joue" in command:
         song_name = command.replace("joue", "").strip()
-        parler(f"Recherche de {song_name} sur Youtube")
 
         # Recherche sur Youtube
         results = YoutubeSearch(song_name, max_results=1).to_dict()
         if results:
             video_url = f"https://www.youtube.com/watch?v={results[0]['id']}"
-            parler(f"Lecture de {results[0]['title']}")
             webbrowser.open(video_url)
         else:
             parler("Aucune vidéo trouvée.")

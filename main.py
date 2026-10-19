@@ -25,10 +25,10 @@ def reconnaitre_voix():
             print(f"Vous avez dit: {commande}")
             return commande.lower()
         except sr.UnknownValueError:
-            speak("Je n'ai pas compris. Veuillez répéter.")
+            parler("Je n'ai pas compris. Veuillez répéter.")
             return ""
         except sr.RequestError:
-            speak("Erreur de service. Veuillez vérifier votre connexion Internet.")
+            parler("Erreur de service. Veuillez vérifier votre connexion Internet.")
             return ""
 
 # Fonction pour executer les commandes vocales
@@ -36,24 +36,24 @@ def execute_commmande():
     command = reconnaitre_voix()
     if "joue" in command:
         song_name = command.replace("joue", "").strip()
-        speak(f"Recherche de {song_name} sur Youtube")
+        parler(f"Recherche de {song_name} sur Youtube")
 
         # Recherche sur Youtube
         results = YoutubeSearch(song_name, max_results=1).to_dict()
         if results:
             video_url = f"https://www.youtube.com/watch?v={results[0]['id']}"
-            speak(f"Lecture de {results[0]['title']}")
+            parler(f"Lecture de {results[0]['title']}")
             webbrowser.open(video_url)
         else:
-            speak("Aucune vidéo trouvée.")
+            parler("Aucune vidéo trouvée.")
     elif "Ouvre Youtube" in command:
-        speak("Ouverture de Youtube")
+        parler("Ouverture de Youtube")
         webbrowser.open("https://www.youtube.com/")
     elif "ferme" in command:
-        speak("Fermeture de l'application")
+        parler("Fermeture de l'application")
         app.quit()
     else:
-        speak("Commande non reconnue. Veuillez réessayer.")
+        parler("Commande non reconnue. Veuillez réessayer.")
 
 # Initialiser l'application
 app = ctk.CTk()
